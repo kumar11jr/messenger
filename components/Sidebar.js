@@ -5,6 +5,7 @@ import { Avatar, IconButton } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
+import { Button } from '@mui/material';
 const Sidebar = () => {
   return (
     <Container>
@@ -19,7 +20,11 @@ const Sidebar = () => {
         </StyledIconButton>
         </IconContainer>
       </Header>
+      <Search>
       <SearchIcon />
+      <SearchInput placeholder='Search in Chats' />
+      </Search>
+      <SidebarButton>Start a New Chat</SidebarButton>
     </Container>
   );
 };
@@ -35,12 +40,22 @@ const Header = styled.div`
   display:flex;
   justify-content:space-between;
   position:sticky;
-  background-color: black;
+  // background-color: black;
   z-index:1;
   top: 0;
   padding:15px;
   height:80px;
   
+`;
+
+const SidebarButton = styled(Button)`
+  width:100%;
+  &&&{
+    border-top: 1px solid whitesmoke;
+    border-button:1px solid whitesmoke;
+  }
+
+
 `;
 
 const UserAvatar = styled(Avatar)`
@@ -52,12 +67,23 @@ const IconContainer = styled.div``;
 
 const StyledIconButton = styled(IconButton)`
   /* Your styles for StyledIconButton here */
-  background-color: transparent; /* Set your desired background color */
-  color: white; /* Set your desired text color */
+  // background-color: transparent; /* Set your desired background color */
+  // color: white; /* Set your desired text color */
   border-radius: 50%; /* Makes it round */
   padding: 8px; /* Set your desired padding */
   
   /* You can add more custom styles as needed */
 `;
 
+const Search = styled.div`
+  display: flex;
+  align-items:center;
+  padding:20px;
+  border-radius:2px;
+`;
+const SearchInput = styled.input`
+  outline-width:0;
+  border:none;
+  flex:1;
+`;
 // You can add more styles for other components as needed
