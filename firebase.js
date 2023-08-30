@@ -1,19 +1,20 @@
-import firebase from 'firebase';
-import 'firebase/auth'
+import { initializeApp, getApps } from "firebase/app";
 const firebaseConfig = {
-    apiKey: "AIzaSyBOVR2Me7jmPdv5x0-N4f7I2apiAnyPQnc",
-    authDomain: "whatsapp2-b71a9.firebaseapp.com",
-    projectId: "whatsapp2-b71a9",
-    storageBucket: "whatsapp2-b71a9.appspot.com",
-    messagingSenderId: "637451018819",
-    appId: "1:637451018819:web:a5fd8f51dcb1f51cb02af6"
-  };
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+};
 
 
-  const app = !firebase.apps.length ? firebase.initializeApp(firebaseConfig) : firebase.app();
-
-  const db = app.firestore(); // Firestore
-  const auth = app.auth(); // Authentication
-  const provider = new firebase.auth.GoogleAuthProvider(); // Google Authentication Provider
+  const app = getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+  // const db = app.firestore(); // Firestore
+  // const auth = app.auth(); // Authentication
+  // const provider = new firebase.auth.GoogleAuthProvider(); // Google Authentication Provider
   
-  export { db, auth, provider };
+
+  export default app;
+  // export { db, auth, provider };
