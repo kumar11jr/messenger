@@ -6,7 +6,20 @@ import ChatIcon from '@mui/icons-material/Chat';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import SearchIcon from '@mui/icons-material/Search';
 import { Button } from '@mui/material';
+import * as EmailValidator from "email-validator"
 const Sidebar = () => {
+  
+  const handleClick = () =>{
+    const input = () => prompt(
+      "Please enter an email address for the user"
+    )
+    if(!input) return null;
+    if(EmailValidator.validate(input)){
+      
+    }
+  }
+
+
   return (
     <Container>
       <Header>
@@ -24,7 +37,7 @@ const Sidebar = () => {
       <SearchIcon />
       <SearchInput placeholder='Search in Chats' />
       </Search>
-      <SidebarButton>Start a New Chat</SidebarButton>
+      <SidebarButton onClick={handleClick} >Start a New Chat</SidebarButton>
     </Container>
   );
 };
